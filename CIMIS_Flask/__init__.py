@@ -35,6 +35,9 @@ def create_app(test_config=None):
     def hello_world(name):
         return render_template('hello.html', person=name)
 
+    from . import weather_data
+    app.register_blueprint(weather_data.bp)
+
     '''
         Initialize the database for the application
     '''
