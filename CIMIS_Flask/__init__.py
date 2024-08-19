@@ -2,7 +2,9 @@ import os
 from flask import Flask, render_template
 
 def create_app(test_config=None):
-    # create and configure app
+    '''
+        Creating and configuring the application
+    '''
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
@@ -21,8 +23,10 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
-    
-    # simple test pages so far 
+
+    '''
+        Routes used for this application
+    '''
     @app.route('/')
     def index():
         return render_template('welcome.html')
@@ -30,5 +34,11 @@ def create_app(test_config=None):
     @app.route('/<name>')
     def hello_world(name):
         return render_template('hello.html', person=name)
+
+    '''
+        Initialize the database for the application
+    '''
+    from . import db
+    db.init_app(app)
 
     return app
