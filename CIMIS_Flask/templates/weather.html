@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}Weather Data{% endblock %}
+{% block content %}
+    <h1>Select Weather Data</h1>
+    <form method="post" action="{{ url_for('weather_data.get_weather') }}">
+        <label for="station_id">Selection Station Id:</label>
+        <select id="station_id" name="station_id" required>
+            {% for id in station_ids %}
+                <option value="{{ id }}">{{ id }}</option>
+            {% endfor %}
+        </select>
+        <label for="col_val">Select Data to Query:</label>
+        <select id="col_val" name="col_val" required>
+            {% for col_val in col_vals %}
+                <option value="{{ col_val }}">{{ col_val }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+{% endblock %}
