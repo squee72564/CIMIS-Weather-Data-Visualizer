@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+    <h1>CIMIS Weather Data Visualizer</h1>
+    <div class="page-text">
+        <p>This website serves as a basic visualizer for the CIMIS weather station data. It can be used to select a station and display several data attributes for all daily data collected at the sensor since its installation.</p>
+        <p>The data has been manually collected from the <a href="https://cimis.water.ca.gov">CIMIS website</a> and will be updated periodically. All data is untreated and as is from the sensor data, including outliers, sensor malfunctions, and any other instances that would cause funky data.</p>
+        <p>Click these links to find out more about the weather sensor placement, sensor specifications, and sensor maintinenance <a href="https://cimis.water.ca.gov/Stations.aspx">here</a>.<p>
+        <p>The website uses Flask, matplotlib, scikit-learn, and other python libraries to render the web layout and generate plots for the data.</p>
+    </div>
+{% endblock %}

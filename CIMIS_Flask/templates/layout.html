@@ -4,6 +4,7 @@
     {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>{% block title %} {% endblock %} - CIMIS Visualizer</title>
     {% endblock %}
 </head>
@@ -12,8 +13,11 @@
         <a href="/">Home</a>
         <a href="/weather">Weather Data</a>
     </nav>
-    {% block content %}
-    {% endblock %}
-    <footer>{% block footer %} This is the footer {% endblock %}</footer>
+    <div class="content">
+	{% block content %}
+	{% endblock %}
+    </div>
+    <footer>{% block footer %}<span>The code repository for the website can be found at <a href="https://github.com/squee72564/CIMIS-Weather-Data-Visualizer">Github</a>.</span>{% endblock %}</footer>
+    
 </body>
 </html>
