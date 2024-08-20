@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 {% block title %}Weather Data{% endblock %}
 {% block content %}
+    <h2>Plot Weather Data</h2>
+    <p>This webpage allows you to select a CIMIS sensor and desired data. All data is untreated and was collected from the daily reports on the <a href="https://cimis.water.ca.gov/">CIMIS website</a>. After choosing and station and data, it will show the plot of the collected data, as well as a line of best fit. Keep in mind that the data is not treated for outliers, sensor malfunctions, or other sources of funky data; take it with a grain of salt.</p>
     <form method="post" action="{{ url_for('weather_data.get_weather') }}">
         <label for="station_id">Select Station Id:</label>
         <select id="station_id" name="station_id" required>
@@ -17,7 +19,6 @@
         <button type="submit">Submit</button>
     </form>
     {% if image %}
-        <h2>Weather Data Plot</h2>
         <img src="data:image/png;base64,{{ image }}" alt="Weather Data Plot">
     {% endif %}
 {% endblock %}
