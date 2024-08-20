@@ -1,12 +1,11 @@
 {% extends "layout.html" %}
 {% block title %}Weather Data{% endblock %}
 {% block content %}
-    <h1>Select Weather Data</h1>
     <form method="post" action="{{ url_for('weather_data.get_weather') }}">
-        <label for="station_id">Selection Station Id:</label>
+        <label for="station_id">Select Station Id:</label>
         <select id="station_id" name="station_id" required>
-            {% for id in station_ids %}
-                <option value="{{ id }}">{{ id }}</option>
+            {% for id, name in station_pairs %}
+                <option value="{{ id }}">{{ id }} - {{ name }}</option>
             {% endfor %}
         </select>
         <label for="col_val">Select Data to Query:</label>
@@ -17,13 +16,8 @@
         </select>
         <button type="submit">Submit</button>
     </form>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+    {% if image %}
+        <h2>Weather Data Plot</h2>
+        <img src="data:image/png;base64,{{ image }}" alt="Weather Data Plot">
+    {% endif %}
 {% endblock %}
