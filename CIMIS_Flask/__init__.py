@@ -29,11 +29,7 @@ def create_app(test_config=None):
     '''
     @app.route('/')
     def index():
-        return render_template('welcome.html')
-
-    @app.route('/<name>')
-    def hello_world(name):
-        return render_template('hello.html', person=name)
+        return render_template('home.html')
 
     from . import weather_data
     app.register_blueprint(weather_data.bp)
