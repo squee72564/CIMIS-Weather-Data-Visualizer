@@ -75,7 +75,7 @@ def populate_db_command():
     '''Populate the db with the .csv file'''
 
     added_items = populate_db()
-    click.echo(f'Populated the database with {added_items} instanced.')
+    click.echo(f'Populated the database with {added_items} instances.')
 
 def init_app(app):
     app.teardown_appcontext(close_db)

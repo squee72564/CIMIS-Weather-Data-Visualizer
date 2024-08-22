@@ -29,7 +29,7 @@ Now on the computer you want to run the production server on:
 1. Move the .whl file that was created to that computer
 2. To populate the database with CIMIS data, you can either download your own from the website, or alternatively move the data provided in this repository into the directory where the .whl file is located on your production computer.
     * If you use the data from this repo make sure it is within `./CIMIS_Flask/data/` where `./` is the same base directory the .whl file is located so the populate script works properly
-3. Install the file with `pip install dist/cimis_flask-1.0.0-x.x.x.x.whl`
+3. On your production machine install the file with `pip install cimis_flask-1.0.0-x.x.x.x.whl`
 6. You will need to init and populate the database for the flask server by doing the following:
 	* Run `flask --app CIMIS_Flask init-db` to initialize the database
 	* Run `flask --app CIMIS_Flask populate-db` to populate the database with the rows from the .csv file of sensor data
