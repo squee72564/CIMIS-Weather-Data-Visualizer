@@ -33,9 +33,11 @@ Now on the computer you want to run the production server on:
 6. You will need to init and populate the database for the flask server by doing the following:
 	* Run `flask --app CIMIS_Flask init-db` to initialize the database
 	* Run `flask --app CIMIS_Flask populate-db` to populate the database with the rows from the .csv file of sensor data
-8. Configure a SECRET_KEY to some random bytes and copy to your venv instance folder:
-    * `python -c "import secrets; print(f'SECRET_KEY="{secrets.token_hex()}"')"`
-    * Create a config.py file in venv/var/CIMIS_Flask-instance and copy the ouput key into it
+8. Configure a SECRET_KEY to some random bytes and copy to your venv/var/CIMIS_Flask-instance instance folder:
+    * You can use the python secrets library to do this:
+    * Start python interpreter
+    * Run this code: `import secrets; print(f'SECRET_KEY="{secrets.token_hex()}"')`
+    * Create a file venv/var/CIMIS_Flask-instance/config.py and copy the ouput key into it
 7. Install a production server like Waitress
     * `pip install waitress`
 8. Tell Waitress to serve the application:
