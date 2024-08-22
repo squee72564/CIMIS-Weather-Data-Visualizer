@@ -27,7 +27,7 @@ All data has been manually collected from their website and rendered into a simp
 	* Run `flask --app CIMIS_Flask init-db` to initialize the database
 	* Run `flask --app CIMIS_Flask populate-db` to populate the database with the rows from the .csv file of sensor data
 8. Configure a SECRET_KEY to some random bytes and copy to your venv instance folder:
-    * `python -c 'import secrets; print(f'SECRET_KEY = {secrets.token_hex()}')'`
+    * `python -c 'import secrets; print(f"SECRET_KEY = {secrets.token_hex()}")'`
     * Create a config.py file in venv/var/CIMIS_Flask-instance and copy the ouput key into it
 7. Install a production server like Waitress
     * pip install waitress
