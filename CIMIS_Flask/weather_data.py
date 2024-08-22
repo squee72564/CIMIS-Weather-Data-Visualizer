@@ -2,9 +2,8 @@ import io
 import base64
 import numpy as np
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, g, render_template, request
 )
-from werkzeug.exceptions import abort
 from CIMIS_Flask.db import get_db
 from sklearn.linear_model import LinearRegression
 import matplotlib
@@ -80,7 +79,7 @@ def get_weather():
     col_vals = [
         col[0]
         for col
-        in db.execute('SELECT * FROM weather_data').description
+        in db.execute('SELECT * FROM weather_data LIMIT 1').description
         if col[0] not in exclude_vals
     ]
 
