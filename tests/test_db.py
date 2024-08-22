@@ -1,7 +1,7 @@
 import sqlite3
 
 import pytest
-from CIMIS_Flask.db import get_db
+from CIMIS_Flask.db import get_db, populate_db
 
 def test_get_close_db(app):
     with app.app_context():
@@ -23,4 +23,17 @@ def test_init_db_command(runner, monkeypatch):
     monkeypatch.setattr('CIMIS_Flask.db.init_db', fake_init_db)
     result = runner.invoke(args=['init-db'])
     assert 'Initialized the database.' in result.output
+    assert Recorder.called
+
+def test_populate_db_command(runner, monkeypatch):
+    class Recorder(object):
+        called = False
+    
+    def fake_populate_db():
+        Recorder.called = True
+        populate_db()
+
+    monkeypatch.setattr('CIMIS_Flask.db.populate_db', fake_populate_db)
+    result = runner.invoke(args=['populate-db'])
+    assert f'Populated the database' in result.output
     assert Recorder.called
