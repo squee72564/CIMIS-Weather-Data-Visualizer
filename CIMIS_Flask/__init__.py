@@ -34,6 +34,9 @@ def create_app(test_config=None):
     from . import weather_data
     app.register_blueprint(weather_data.bp)
 
+    from . import api
+    app.register_blueprint(api.bp)
+
     '''
         Initialize the database for the application
     '''
