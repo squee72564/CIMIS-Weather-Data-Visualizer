@@ -30,6 +30,6 @@ All data has been manually collected from their website and rendered into a simp
     * `python -c 'import secrets; print(f"SECRET_KEY = {secrets.token_hex()}")'`
     * Create a config.py file in venv/var/CIMIS_Flask-instance and copy the ouput key into it
 7. Install a production server like Waitress
-    * pip install waitress
+    * `pip install waitress`
 8. Tell Waitress to serve the application:
     * `waitress-serve --call 'CIMIS_Flask:create_app'`
